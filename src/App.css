@@ -35,8 +35,12 @@
   color: white;
 }
 .bg-font{
-  text-align: center;
+  margin: auto;
+  width: 70%;
   padding-top: 30px;
+}
+.bg-img{
+  width: 100%;
 }
 
 @keyframes App-logo-spin {

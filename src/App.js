@@ -37,19 +37,19 @@ function App() {
 </div>
 <div className='container'>
     <div className='row'>
-    <div className='col-md-4'>
-      <img src="https://codingapple1.github.io/shop/shoes1.jpg"/>
+     <div className='col-md-4'>
+      <img src="https://codingapple1.github.io/shop/shoes1.jpg" className='bg-img'/>
       <h4>상품명</h4>
       <p>상품설명 & 가격 </p>
       </div>
-      
+
       <div className='col-md-4'>
-      <img src="https://codingapple1.github.io/shop/shoes2.jpg"/>
+      <img src="https://codingapple1.github.io/shop/shoes2.jpg" className='bg-img'/>
       <h4>상품명</h4>
       <p>상품설명 & 가격 </p>
       </div>
       <div className='col-md-4'>
-      <img src="https://codingapple1.github.io/shop/shoes3.jpg"/>
+      <img src="https://codingapple1.github.io/shop/shoes3.jpg" className='bg-img'/>
       <h4>상품명</h4>
       <p>상품설명 & 가격 </p>
       </div>
