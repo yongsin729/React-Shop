@@ -43,12 +43,15 @@ function App() {
 
 <div className='container main'>
     <div className='row'>
-     <div className='col-md-4'>
-      <img src="https://codingapple1.github.io/shop/shoes1.jpg" className='bg-img'/>
-      <h4>{shoes[0].title}</h4>
-      <p>상품설명 & 가격 </p>
-      </div>
-
+    {
+      shoes.map(function(a,i){
+        return(
+          <Card shoes={shoes[i]} i={i}/>      
+        )
+      })
+    }
+    
+    {/* <Card/>
       <div className='col-md-4'>
       <img src="https://codingapple1.github.io/shop/shoes2.jpg" className='bg-img'/>
       <h4>상품명</h4>
@@ -58,11 +61,26 @@ function App() {
       <img src="https://codingapple1.github.io/shop/shoes3.jpg" className='bg-img'/>
       <h4>상품명</h4>
       <p>상품설명 & 가격 </p>
-      </div>
+      </div> */}
     </div>
 </div>
+
     </div>
+
+
+
   );
+
+
+  function Card(props){
+    return(
+      <div className='col-md-4'>
+      <img src={'https://codingapple1.github.io/shop/shoes'+(props.i+1)+'.jpg'} className='bg-img'/>
+      <h4>{props.shoes.title}</h4>
+      <p>{props.shoes.content} & {props.shoes.price} </p>
+      </div>
+    );
+  }
 }
 
 export default App;
