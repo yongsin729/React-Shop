@@ -1,8 +1,13 @@
 import logo from './logo.svg';
 import { Button,Navbar,Container,Nav,NavDropdown } from 'react-bootstrap';
 import './App.css';
+import { useState } from 'react';
+import Data from './data.js';
 
 function App() {
+
+  let [shoes,shoesChange]=useState(Data);
+
   return (
     <div className="App">
      <Navbar bg="light" expand="lg">
@@ -35,11 +40,12 @@ function App() {
 <Button variant="outline-primary">Primary</Button>{' '}
     </div>
 </div>
-<div className='container'>
+
+<div className='container main'>
     <div className='row'>
      <div className='col-md-4'>
       <img src="https://codingapple1.github.io/shop/shoes1.jpg" className='bg-img'/>
-      <h4>상품명</h4>
+      <h4>{shoes[0].title}</h4>
       <p>상품설명 & 가격 </p>
       </div>
 
