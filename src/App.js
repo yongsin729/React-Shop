@@ -1,8 +1,12 @@
+/* eslint-disable */
+
 import logo from './logo.svg';
 import { Button,Navbar,Container,Nav,NavDropdown } from 'react-bootstrap';
 import './App.css';
 import { useState } from 'react';
 import Data from './data.js';
+import {Link,Route,Switch} from 'react-router-dom';
+import Detail from './Detail.js';
 
 function App() {
 
@@ -12,12 +16,12 @@ function App() {
     <div className="App">
      <Navbar bg="light" expand="lg">
   <Container>
-    <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+    <Navbar.Brand href="#home">Shoes Shop</Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#link">Link</Nav.Link>
+        <Nav.Link><Link to='/'>Home</Link></Nav.Link>
+        <Nav.Link><Link to='/detail'>Detail</Link></Nav.Link>
         <NavDropdown title="Dropdown" id="basic-nav-dropdown">
           <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -31,6 +35,12 @@ function App() {
 </Navbar>
 
 
+
+
+<Switch>
+
+<Route exact path="/">
+  
 <div className='bg'>
   <div className='bg-font'>
 <h1>20% Sale</h1>
@@ -46,25 +56,26 @@ function App() {
     {
       shoes.map(function(a,i){
         return(
-          <Card shoes={shoes[i]} i={i}/>      
+          <Card shoes={shoes[i]} i={i} key={i}/>      
         )
       })
     }
-    
-    {/* <Card/>
-      <div className='col-md-4'>
-      <img src="https://codingapple1.github.io/shop/shoes2.jpg" className='bg-img'/>
-      <h4>상품명</h4>
-      <p>상품설명 & 가격 </p>
-      </div>
-      <div className='col-md-4'>
-      <img src="https://codingapple1.github.io/shop/shoes3.jpg" className='bg-img'/>
-      <h4>상품명</h4>
-      <p>상품설명 & 가격 </p>
-      </div> */}
+      
+   
     </div>
 </div>
+</Route>
 
+<Route path="/detail/:id">
+
+    <Detail shoes={shoes}/>
+</Route>
+
+<Route path="/:id">
+    <div>아무거나</div>
+</Route>
+
+</Switch>
     </div>
 
 
