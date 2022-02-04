@@ -12,23 +12,31 @@ let 제목=styled.h4`
 
 function Detail(props){
 
-    useEffect
-
+    
+    let [modal,modal변경]=useState(true);
     let {id}=useParams();
     let 찾은상품 = props.shoes.find(function(상품){
         return 상품.id==id
     });
     
+    useEffect(()=>{
+        let timer=setTimeout(()=>{
+            modal변경(false);
+        },2000);
+        
+    });
     let history=useHistory();
     return (
         <div className="container">
             <box1>
                 <제목 className='red'>Detail</제목>
             </box1>
-            <div className='my-alert-yellow'>
-                <p>재고가 얼마 남지 않았습니다</p>
-            </div>
-
+           
+        {
+            modal===true ?
+            <Modal></Modal>
+            : null
+        }
       <div className="row">
         <div className="col-md-6">
           <img src={"https://codingapple1.github.io/shop/shoes"+(찾은상품.id+1)+".jpg"} width="100%" />
@@ -46,6 +54,13 @@ function Detail(props){
       </div>
 </div> 
     )
+    function Modal(){
+        return (
+            <div className='my-alert-yellow'>
+            <p>재고가 얼마 남지 않았습니다</p>
+        </div>
+        )
+    }
 }
 
 export default Detail;
