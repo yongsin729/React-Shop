@@ -3,7 +3,7 @@
 import logo from './logo.svg';
 import { Button,Navbar,Container,Nav,NavDropdown } from 'react-bootstrap';
 import './App.css';
-import { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Data from './data.js';
 import {Link,Route,Switch} from 'react-router-dom';
 import Detail from './Detail.js';
@@ -14,6 +14,8 @@ import axios from 'axios';
 //   tmp=[...shoes];
 //   shoesChange(tmp);
 // }
+
+let 재고context= React.createContext();
 
 function App() {
 
@@ -60,6 +62,11 @@ function App() {
 </div>
 
 <div className='container main'>
+    
+    {/* <재고.context.Provider value={재고}>  */}
+    {/* 이제 범위내에서 재고 데이터는 공유가능 */}
+    
+    
     <div className='row'>
     {
       shoes.map(function(a,i){
@@ -71,6 +78,7 @@ function App() {
       
    
     </div>
+    {/* </재고.context.Provider> */}
     <button className='btn btn-primary' onClick={()=>{
 
       // 로딩중이라는 UI
@@ -80,7 +88,7 @@ function App() {
         shoesChange([...shoes,...result.data]);//deep copy ...은 괄호 벗겨줌 copy array 
       })//성공시
       .catch(()=>{ })//실패시
-    }}>More</button>
+    }}>See More</button>
 </div>
 </Route>
 
@@ -102,11 +110,15 @@ function App() {
 
 
   function Card(props){
+    
+    let 재고 = useContext(재고context);//범위입력 , 
+
     return(
       <div className='col-md-4'>
       <img src={'https://codingapple1.github.io/shop/shoes'+(props.i+1)+'.jpg'} className='bg-img'/>
       <h4>{props.shoes.title}</h4>
       <p>{props.shoes.content} & {props.shoes.price} </p>
+      {재고}
       </div>
     );
   }

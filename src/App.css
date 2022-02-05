@@ -41,6 +41,9 @@
 .bg-img{
   width: 100%;
 }
+.main{
+  margin-bottom: 40px;
+}
 
 @keyframes App-logo-spin {
   from {

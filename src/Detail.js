@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import { useHistory,useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import styled from 'styled-components';
+import { Button,Navbar,Container,Nav,NavDropdown } from 'react-bootstrap';
 import './Detail.scss';
 
 let box1=styled.div`
@@ -15,6 +16,7 @@ function Detail(props){
     
     let [modal,modal변경]=useState(true);
     let {id}=useParams();
+    let [tab,tabChange]=useState(0);
     let 찾은상품 = props.shoes.find(function(상품){
         return 상품.id==id
     });
@@ -60,8 +62,34 @@ function Detail(props){
           }}>뒤로가기</button> 
         </div>
       </div>
+
+      <Nav className="mt-5"variant="tabs" defaultActiveKey="link-0">
+  <Nav.Item>
+    <Nav.Link eventKey="link-0" onClick={()=>{tabChange(0)}}>Active</Nav.Link>
+  </Nav.Item>
+  <Nav.Item>
+    <Nav.Link eventKey="link-1" onClick={()=>{tabChange(1)}}>Option 1</Nav.Link>
+  </Nav.Item>
+  <Nav.Item>
+    <Nav.Link eventKey="link-2" onClick={()=>{tabChange(2)}}>Option 2</Nav.Link>
+  </Nav.Item>
+</Nav>
+      
+      
+          <TabContent tab={tab}/>
 </div> 
     )
+
+    function TabContent(props){
+        
+        if(props.tab===0){
+            return <div>0번째내용</div>
+        }else if(props.tab===1){
+            return <div>1번째내용</div>
+        }else{
+            return <div>2번째 내용 </div>
+        }
+    }
     function Modal(){
         return (
             <div className='my-alert-yellow'>
