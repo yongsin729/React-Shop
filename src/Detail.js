@@ -3,6 +3,7 @@ import { useHistory,useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import styled from 'styled-components';
 import { Button,Navbar,Container,Nav,NavDropdown } from 'react-bootstrap';
 import './Detail.scss';
+import {CSSTransition} from "react-transition-group";
 
 let box1=styled.div`
     padding:20px
@@ -17,6 +18,7 @@ function Detail(props){
     let [modal,modal변경]=useState(true);
     let {id}=useParams();
     let [tab,tabChange]=useState(0);
+    let [스위치,스위치변경]=useState(false);
     let 찾은상품 = props.shoes.find(function(상품){
         return 상품.id==id
     });
@@ -65,23 +67,28 @@ function Detail(props){
 
       <Nav className="mt-5"variant="tabs" defaultActiveKey="link-0">
   <Nav.Item>
-    <Nav.Link eventKey="link-0" onClick={()=>{tabChange(0)}}>Active</Nav.Link>
+    <Nav.Link eventKey="link-0" onClick={()=>{스위치변경(false); tabChange(0)}}>Detail</Nav.Link>
   </Nav.Item>
   <Nav.Item>
-    <Nav.Link eventKey="link-1" onClick={()=>{tabChange(1)}}>Option 1</Nav.Link>
+    <Nav.Link eventKey="link-1" onClick={()=>{스위치변경(false); tabChange(1)}}>Review</Nav.Link>
   </Nav.Item>
   <Nav.Item>
-    <Nav.Link eventKey="link-2" onClick={()=>{tabChange(2)}}>Option 2</Nav.Link>
+    <Nav.Link eventKey="link-2" onClick={()=>{스위치변경(false); tabChange(2)}}>Option 2</Nav.Link>
   </Nav.Item>
 </Nav>
       
-      
-          <TabContent tab={tab}/>
+     <CSSTransition in={스위치} classNames="ani" timeout={500}>
+          <TabContent tab={tab} 스위치변경={스위치변경}/>
+     </CSSTransition>
 </div> 
     )
 
     function TabContent(props){
         
+        useEffect(()=>{
+            props.스위치변경(true);
+        })
+
         if(props.tab===0){
             return <div>0번째내용</div>
         }else if(props.tab===1){

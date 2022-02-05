@@ -11,7 +11,13 @@ $mainColor:#ff0000;
 //         color:blue;
 //     }
 // }
-
+.ani-enter{
+    opacity: 0;
+}//시작시 적용
+.ani-enter-active{
+    opacity: 1;
+    transition: all 500ms;
+}//동작시 적용
 .red{
     color:$mainColor;
 }
