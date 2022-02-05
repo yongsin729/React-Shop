@@ -22,9 +22,12 @@ function Detail(props){
     useEffect(()=>{
         let timer=setTimeout(()=>{
             modal변경(false);
-        },2000);
+            return ()=>{
+                clearTimeout(timer);//detail 없어질시 타이머 해제 
+            }
+        },2000);//이렇게만 하면 업데이트시 실행되므로 버그 발생 가능 
         
-    });
+    },[modal]);//실행조건
     let history=useHistory();
     return (
         <div className="container">
