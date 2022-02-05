@@ -7,10 +7,18 @@ import { useState } from 'react';
 import Data from './data.js';
 import {Link,Route,Switch} from 'react-router-dom';
 import Detail from './Detail.js';
+import axios from 'axios';
+
+// function More(more){
+//   let tmp=[more];
+//   tmp=[...shoes];
+//   shoesChange(tmp);
+// }
 
 function App() {
 
   let [shoes,shoesChange]=useState(Data);
+  let [재고,재고변경]=useState([10,11,12]);
 
   return (
     <div className="App">
@@ -63,12 +71,22 @@ function App() {
       
    
     </div>
+    <button className='btn btn-primary' onClick={()=>{
+
+      // 로딩중이라는 UI
+
+      axios.get('https://codingapple1.github.io/shop/data2.json')
+      .then((result)=>{
+        shoesChange([...shoes,...result.data]);//deep copy ...은 괄호 벗겨줌 copy array 
+      })//성공시
+      .catch(()=>{ })//실패시
+    }}>More</button>
 </div>
 </Route>
 
 <Route path="/detail/:id">
 
-    <Detail shoes={shoes}/>
+    <Detail shoes={shoes} 재고={재고} 재고변경={재고변경}/>
 </Route>
 
 <Route path="/:id">

@@ -29,6 +29,7 @@ function Detail(props){
         
     },[modal]);//실행조건
     let history=useHistory();
+   
     return (
         <div className="container">
             <box1>
@@ -48,7 +49,11 @@ function Detail(props){
           <h4 className="pt-5">{찾은상품.title}</h4>
           <p>{찾은상품.content}</p>
           <p>{찾은상품.price}</p>
-          <button className="btn btn-danger">주문하기</button> 
+
+        <Info 재고={props.재고} id={id}/>
+          <button className="btn btn-danger" onClick={()=>{
+              props.재고변경([9,10,10]);
+          }}>주문하기</button> 
           &nbsp;
           <button className="btn btn-danger" onClick={()=>{
               history.push('/')
@@ -62,6 +67,11 @@ function Detail(props){
             <div className='my-alert-yellow'>
             <p>재고가 얼마 남지 않았습니다</p>
         </div>
+        )
+    }
+    function Info(props) {
+        return(
+            <p>재고 : {props.재고[props.id]}</p>
         )
     }
 }
