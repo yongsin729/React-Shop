@@ -26,6 +26,14 @@
 .App-link {
   color: #61dafb;
 }
+.my-alert1{
+  background-color: #ffe591;
+  padding: 20px;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+}
 .bg{
   width: 100%;
   height: 400px;

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Table} from 'react-bootstrap';
 import { connect,Button } from 'react-redux';
+import './App.css';
 
 function Cart(props){
     return (
@@ -51,6 +52,16 @@ function Cart(props){
     </tr> */}
   </tbody>
 </Table>
+{
+    props.alertOpen===true
+    ?
+    <div className="my-alert1">
+        <p>지금 구매하시면 20% 할인</p>
+        <button onClick={()=>{
+            props.dispatch({type:'닫기'})
+        }}>닫기</button>
+    </div>
+    :null}
         </div>
 
     )
@@ -58,7 +69,8 @@ function Cart(props){
 
 function 함수명(state){
     return{
-        state : state
+        state : state.reducer,
+        alertOpen:state.reducer2
 
     }
 }
