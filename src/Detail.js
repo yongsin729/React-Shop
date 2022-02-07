@@ -98,11 +98,27 @@ function Detail(props){
         })
 
         if(props.tab===0){
-            return <div>0번째내용</div>
+            return (
+              <div className='tab-text'>
+                <ol >
+                  <li>Breathable Upper Vamp</li>
+                  <li>Ankle Protection Top-Line</li>
+                  <li> Stability & Soft Insole</li>
+                  <li> Stretchy & Permeability Midsole</li>
+                  <li>High Elastic & Shock Absorption Outsole</li>
+                  <li> Non Slip & Durable Rubber Patch</li>
+                </ol>
+              </div>
+            );
         }else if(props.tab===1){
-            return <div>1번째내용</div>
+            return (
+                <div className='tab-text'>
+                    <h4>제목</h4>
+                    <p>내용 </p>
+                </div>
+            )
         }else{
-            return <div>2번째 내용 </div>
+            return <div className='tab-text'>Temporary</div>
         }
     }
     function Modal(){
