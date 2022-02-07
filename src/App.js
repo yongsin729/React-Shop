@@ -8,7 +8,7 @@ import Data from './data.js';
 import {Link,Route,Switch} from 'react-router-dom';
 import Detail from './Detail.js';
 import axios from 'axios';
-
+import Cart from './Cart.js';
 // function More(more){
 //   let tmp=[more];
 //   tmp=[...shoes];
@@ -97,6 +97,10 @@ function App() {
     <Detail shoes={shoes} 재고={재고} 재고변경={재고변경}/>
 </Route>
 
+
+<Route path="/cart">
+    <Cart />
+</Route>
 <Route path="/:id">
     <div>아무거나</div>
 </Route>
