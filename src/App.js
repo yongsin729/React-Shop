@@ -9,6 +9,7 @@ import {Link,Route,Switch} from 'react-router-dom';
 import Detail from './Detail.js';
 import axios from 'axios';
 import Cart from './Cart.js';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 // function More(more){
 //   let tmp=[more];
 //   tmp=[...shoes];
@@ -115,9 +116,11 @@ function App() {
   function Card(props){
     
     let 재고 = useContext(재고context);//범위입력 , 
-
+    let history=useHistory();
     return(
-      <div className='col-md-4'>
+      <div className='col-md-4' onClick={()=>{
+        history.push('/detail/'+props.shoes.id)
+      }}>
       <img src={'https://codingapple1.github.io/shop/shoes'+(props.i+1)+'.jpg'} className='bg-img'/>
       <h4>{props.shoes.title}</h4>
       <p>{props.shoes.content} & {props.shoes.price} </p>

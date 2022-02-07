@@ -19,26 +19,33 @@ function reducer2(state=alert초기값,액션){
     return state;
   }
 }//무조건 function 안에있는 state를 이용해서 사용. 기존변수 사용 X 
-let 기본값=[{id:0,name:'멋진신발',quan:2},{id:1,name:'그냥신발',quan:3}];
-
+let 기본값=[{id:3,name:'멋진신발',quan:2},{id:4,name:'그냥신발',quan:3}];
 
 function reducer(state=기본값,액션){
     if(액션.type==='항목추가'){
-      if()
+      let found=state.findIndex((a)=>{return a.id===액션.payload.id})
+      if(found>=0){
+        
+      let copy=[...state];
+      copy[found].quan+=parseInt(액션.payload.quan);
+      return copy; 
+      }else{
+       
       let copy=[...state];
       copy.push(액션.payload);
-      return copy;
+      return copy; 
+      }
     } 
   else if(액션.type==='수량증가'){
     let copy=[...state];
-    copy[0].quan++;
+    copy[액션.data].quan++;
     return copy
   }else if(액션.type==='수량감소'){
     let copy=[...state];
-    if(copy[0].quan<=0){
+    if(copy[액션.data].quan<=0){
       return copy;
     }else{
-    copy[0].quan--;
+    copy[액션.data].quan--;
     return copy
   }
   }

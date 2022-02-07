@@ -1,9 +1,13 @@
 import React from 'react';
 import {Table} from 'react-bootstrap';
-import { connect,Button } from 'react-redux';
+import { connect,Button, useSelector, useDispatch } from 'react-redux';
 import './App.css';
 
 function Cart(props){
+
+let state=useSelector((state)=>state);
+let dispatch=useDispatch();
+
     return (
         <div>
             <Table>
@@ -16,17 +20,17 @@ function Cart(props){
     </tr>
   </thead>
   <tbody>
-        {props.state.map(function(a,i){
+        {state.reducer.map(function(a,i){
             return (
                 <tr key={i}>
-                <td>{props.state[i].id}</td>
-                <td>{props.state[i].name}</td>
-                <td>{props.state[i].quan}</td>
+                <td>{state.reducer[i].id}</td>
+                <td>{state.reducer[i].name}</td>
+                <td>{state.reducer[i].quan}</td>
                 <td><button className="btn btn-danger" onClick={()=>{
-                    props.dispatch({type : '수량증가'})
+                    dispatch({type : '수량증가',data:i})
                 }}>+</button>  &nbsp;
                 <button className="btn btn-danger" onClick={()=>{
-                    props.dispatch({type : '수량감소'})
+                    dispatch({type : '수량감소',data:i})
                 }}>-</button>
                 </td>
               </tr>
@@ -67,12 +71,13 @@ function Cart(props){
     )
 }
 
-function 함수명(state){
-    return{
-        state : state.reducer,
-        alertOpen:state.reducer2
+// function 함수명(state){
+//     return{
+//         state : state.reducer,
+//         alertOpen:state.reducer2
 
-    }
-}
+//     }
+// }
 
-export default connect(함수명)(Cart)
+// export default connect(함수명)(Cart)
+export default Cart;
