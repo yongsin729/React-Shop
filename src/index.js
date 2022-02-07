@@ -24,6 +24,7 @@ let 기본값=[{id:0,name:'멋진신발',quan:2},{id:1,name:'그냥신발',quan:
 
 function reducer(state=기본값,액션){
     if(액션.type==='항목추가'){
+      if()
       let copy=[...state];
       copy.push(액션.payload);
       return copy;

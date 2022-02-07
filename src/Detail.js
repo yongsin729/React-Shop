@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React,{Suspense, useEffect, useState} from 'react';
 import { useHistory,useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import styled from 'styled-components';
 import { Button,Navbar,Container,Nav,NavDropdown } from 'react-bootstrap';
@@ -20,6 +20,7 @@ function Detail(props){
     let {id}=useParams();
     let [tab,tabChange]=useState(0);
     let [스위치,스위치변경]=useState(false);
+    let [amount,amountChange]=useState(0);
     let 찾은상품 = props.shoes.find(function(상품){
         return 상품.id==id
     });
@@ -53,12 +54,16 @@ function Detail(props){
         <div className="col-md-6 mt-4">
           <h4 className="pt-5">{찾은상품.title}</h4>
           <p>{찾은상품.content}</p>
-          <p>{찾은상품.price}</p>
+          <p>{찾은상품.price}원</p>
 
-        <Info 재고={props.재고} id={id}/>
+        {/* <Info 재고={props.재고} id={id}/> */}
+        <p>수량 : <input type="number"  min="1" max="5"className='input-amount' onChange={(e)=>{
+            amountChange(e.target.value);
+            
+        }}></input></p>
           <button className="btn btn-danger" onClick={()=>{
             //   props.재고변경([9,10,10]);
-              props.dispatch({type:'항목추가',payload:{id:2,name:'새로운 상품',quan:1}})
+              props.dispatch({type:'항목추가',payload:{id:찾은상품.id,name:찾은상품.title,quan:amount}})
               history.push('/cart');
           }}>주문하기</button> 
           &nbsp;
