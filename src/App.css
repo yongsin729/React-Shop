@@ -52,7 +52,18 @@
 .main{
   margin-bottom: 40px;
 }
-
+.cart-buy{
+  margin-top: 20px;
+  text-align: right;
+  margin-right: 70px;
+}
+.cart-buy p{
+  font-size: 18px;
+  font-weight: 300px;
+  margin-right: 20px;
+}
+.buy-button{
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

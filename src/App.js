@@ -33,13 +33,14 @@ function App() {
       <Nav className="me-auto">
         <Nav.Link as={Link} to='/'>Home</Nav.Link>
         <Nav.Link as={Link} to='/detail/1'>Detail</Nav.Link>
-        <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+        <Nav.Link as={Link} to='/cart'>Cart</Nav.Link>
+        {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
           <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-        </NavDropdown>
+        </NavDropdown> */}
       </Nav>
     </Navbar.Collapse>
   </Container>
@@ -58,7 +59,7 @@ function App() {
     <p>Okay yes, it’s a little chilly. And sure, we’d all love to just wrap ourselves in our comforters and call it a day. But just because the weather’s turning, doesn’t mean your style has to go into hibernation too. Behold, the cutest, coziest, and cuddliest cold-weather pieces to keep you wrapped up in style and warmth (without resorting to wearing your bedspread).
     
 </p>
-<Button variant="outline-primary">Primary</Button>{' '}
+<Button className='btn btn-primary'>See Detail</Button>{' '}
     </div>
 </div>
 

@@ -17,6 +17,7 @@ let dispatch=useDispatch();
       <th>상품명</th>
       <th>수량</th>
       <th>변경</th>
+      <th>가격</th>
     </tr>
   </thead>
   <tbody>
@@ -33,7 +34,10 @@ let dispatch=useDispatch();
                     dispatch({type : '수량감소',data:i})
                 }}>-</button>
                 </td>
+                
+                <td>$0</td>
               </tr>
+              
             )
         })}
 {/* 
@@ -55,7 +59,12 @@ let dispatch=useDispatch();
       <td>@twitter</td>
     </tr> */}
   </tbody>
+  
 </Table>
+<div className='cart-buy'>
+    <p>Price : $0</p>
+  <button className='btn btn-danger buy-button'>Purchase</button>
+  </div>
 {
     props.alertOpen===true
     ?
