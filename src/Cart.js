@@ -7,7 +7,7 @@ function Cart(props){
 
 let state=useSelector((state)=>state);
 let dispatch=useDispatch();
-
+let total=0;
     return (
         <div>
             <Table>
@@ -16,12 +16,16 @@ let dispatch=useDispatch();
       <th>#</th>
       <th>상품명</th>
       <th>수량</th>
-      <th>변경</th>
+      <th>수량변경</th>
       <th>가격</th>
     </tr>
   </thead>
   <tbody>
         {state.reducer.map(function(a,i){
+            let tmp=0;
+            
+            tmp+=state.reducer[i].price*state.reducer[i].quan;
+            total+=tmp;
             return (
                 <tr key={i}>
                 <td>{state.reducer[i].id}</td>
@@ -34,11 +38,12 @@ let dispatch=useDispatch();
                     dispatch({type : '수량감소',data:i})
                 }}>-</button>
                 </td>
-                
-                <td>$0</td>
+                <td>₩{state.reducer[i].price}</td>
               </tr>
               
             )
+           
+
         })}
 {/* 
     <tr>
@@ -62,7 +67,7 @@ let dispatch=useDispatch();
   
 </Table>
 <div className='cart-buy'>
-    <p>Price : $0</p>
+    <p>Total Price : ₩{total}</p>
   <button className='btn btn-danger buy-button'>Purchase</button>
   </div>
 {

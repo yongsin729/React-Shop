@@ -63,7 +63,7 @@ function Detail(props){
         }}></input></p>
           <button className="btn btn-danger" onClick={()=>{
             //   props.재고변경([9,10,10]);
-              props.dispatch({type:'항목추가',payload:{id:찾은상품.id,name:찾은상품.title,quan:amount}})
+              props.dispatch({type:'항목추가',payload:{id:찾은상품.id,name:찾은상품.title,quan:amount,price:찾은상품.price}})
               history.push('/cart');
           }}>주문하기</button> 
           &nbsp;

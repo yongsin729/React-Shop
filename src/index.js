@@ -19,7 +19,7 @@ function reducer2(state=alert초기값,액션){
     return state;
   }
 }//무조건 function 안에있는 state를 이용해서 사용. 기존변수 사용 X 
-let 기본값=[{id:3,name:'멋진신발',quan:2},{id:4,name:'그냥신발',quan:3}];
+let 기본값=[{id:3,name:'멋진신발',quan:2,price:110000},{id:4,name:'그냥신발',quan:3,price:99000}];
 
 function reducer(state=기본값,액션){
     if(액션.type==='항목추가'){
