@@ -3,10 +3,12 @@
 import logo from './logo.svg';
 import { Button,Navbar,Container,Nav,NavDropdown } from 'react-bootstrap';
 import './App.css';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState ,lazy,Suspense} from 'react';
 import Data from './data.js';
 import {Link,Route,Switch} from 'react-router-dom';
-import Detail from './Detail.js';
+let Detail=lazy(()=>{return import('./Detail.js')});//lazy로 성능잡기 필요할 때만 사용. 
+// import Detail from './Detail.js';
+
 import axios from 'axios';
 import Cart from './Cart.js';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
@@ -95,8 +97,9 @@ function App() {
 </Route>
 
 <Route path="/detail/:id">
-
+<Suspense fallback={<div>로딩중입니다</div>}>
     <Detail shoes={shoes} 재고={재고} 재고변경={재고변경}/>
+    </Suspense>
 </Route>
 
 <Route path="/cart">
