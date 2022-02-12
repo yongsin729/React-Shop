@@ -81,7 +81,7 @@ function Detail(props){
     <Nav.Link eventKey="link-1" onClick={()=>{스위치변경(false); tabChange(1)}}>Review</Nav.Link>
   </Nav.Item>
   <Nav.Item>
-    <Nav.Link eventKey="link-2" onClick={()=>{스위치변경(false); tabChange(2)}}>Option 2</Nav.Link>
+    <Nav.Link eventKey="link-2" onClick={()=>{스위치변경(false); tabChange(2)}}>Product information</Nav.Link>
   </Nav.Item>
 </Nav>
       
@@ -118,7 +118,14 @@ function Detail(props){
                 </div>
             )
         }else{
-            return <div className='tab-text'>Temporary</div>
+            return ( 
+            <div className='tab-text'>
+             <h4>제목</h4>
+                    <p>제품의 주소재(운동화인 경우에는 겉감,안감을 구분하여 표시)	겉감 : 합성가죽 / 안감 : 폴리에스터 / 아웃솔: 합성고무	색상	142 White + Green
+치수	사이즈안내참조	제조자(수입자)	휠라코리아(주) / 휠라코리아(주)
+제조국	중국	취급시 주의사항	화기주의</p>
+            </div>
+            )
         }
     }
     function Modal(){
