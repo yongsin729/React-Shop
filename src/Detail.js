@@ -36,6 +36,20 @@ function Detail(props){
     },[modal]);//실행조건
     let history=useHistory();
    
+    useEffect(()=>{
+        var arr=localStorage.getItem('watched');
+        if(arr==null){
+            arr=[];
+        }else{
+            arr=JSON.parse(arr);
+        }
+        arr.push(id);
+        arr=new Set(arr);
+        arr=[...arr];
+
+        localStorage.setItem('watched',JSON.stringify(arr));
+
+    },[]);//use set
     return (
         <div className="container">
             <box1>
